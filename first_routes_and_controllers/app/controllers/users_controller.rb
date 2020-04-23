@@ -1,17 +1,21 @@
 require 'byebug'
 
 class UsersController < ApplicationController
-  def index
+
+  # GET /users
+  def index  
     # debugger
     @users = User.all
     render json: @users
   end
 
+  # GET /users/:id
   def show
     @user = User.find(params[:id])
     render json: @user
   end
 
+  # POST /users
   def create
     # debugger 
     @user = User.new(user_params)
@@ -23,6 +27,8 @@ class UsersController < ApplicationController
     end
   end
 
+  # PUT /users/:id
+  # PATCH /users/:id
   def update
     # debugger
     @user = User.find(params[:id])
@@ -39,13 +45,14 @@ class UsersController < ApplicationController
     end
   end
 
+
+  # DELETE /users/:id
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     render json: @user # Use render instead of redirect_to bc of Postman's redirect issues
     # redirect_to users_url # 404 error
   end
-  
   
   private
   def user_params
