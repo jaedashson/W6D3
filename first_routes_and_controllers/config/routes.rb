@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   # get '/artwork_shares/:id', to: 'artwork_shares#show', as: 'user'
   # delete '/artwork_shares/:id', to: 'artwork_shares#destroy'
 
+  # GET /users/:user_id/artworks
+  resources :users do
+    resources :artworks, only: :index 
+  end
+
+
 end

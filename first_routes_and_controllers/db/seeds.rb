@@ -26,5 +26,5 @@ share2 = ArtworkShare.create!(artwork_id: art2.id, viewer_id: user1.id)
 share3 = ArtworkShare.create!(artwork_id: art3.id, viewer_id: user1.id)
 share4 = ArtworkShare.create!(artwork_id: art4.id, viewer_id: user1.id)
 
-
+# GET /users/:<@user1.id>/artworks => art1, art1, art2, art3, art4
  

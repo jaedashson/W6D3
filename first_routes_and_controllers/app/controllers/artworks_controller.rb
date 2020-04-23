@@ -3,8 +3,17 @@ require 'byebug'
 class ArtworksController < ApplicationController
 
   # GET /artworks
+  # GET /users/:user_id/artworks <--NESTED ROUTE
   def index
-    @artworks = Artwork.all
+    if params.has_key?(:user_id) # # GET /users/:user_id/artworks
+      @artworks = Artwork.joins(:shares)
+        .where("artworks.artist_id = ? OR artwork_shares.viewer_id = ?", params[:user_id], params[:user_id])
+        # Why do we not get duplicates if an artwork belongs to
+        # a user and has been shared with that user?
+    else # GET /artworks
+      @artworks = Artwork.all
+    end
+    
     render json: @artworks
   end
 
