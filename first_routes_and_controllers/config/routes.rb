@@ -15,4 +15,11 @@ Rails.application.routes.draw do
   # put '/artworks/:id', to: 'artworks#update'
   # patch '/artworks/:id', to: 'artworks#update'
   # delete '/artworks/:id', to: 'artworks#destroy'
+
+  resources :artwork_shares, only: [:create, :destroy, :index, :show]
+  # get '/artwork_shares', to: 'artwork_shares#index', as: 'users'
+  # post '/artwork_shares', to: 'artwork_shares#create'
+  # get '/artwork_shares/:id', to: 'artwork_shares#show', as: 'user'
+  # delete '/artwork_shares/:id', to: 'artwork_shares#destroy'
+
 end
